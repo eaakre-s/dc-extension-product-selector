@@ -45,7 +45,7 @@ export class CommerceTools {
         return [];
       }
       
-      console.log('getItems-filterIds', filterIds);
+      console.log('getItems', filterIds);
       const headers = await this.getHeaders();
       const idsStrings = '"' + filterIds.join('","') + '"';
 
@@ -59,7 +59,7 @@ export class CommerceTools {
         {
           staged: false,
           limit: PAGE_SIZE,
-          where: `id in (${idsStrings})`
+          where: `key in (${idsStrings})`
         }
       );
 
@@ -145,9 +145,6 @@ export class CommerceTools {
 
   exportItem(item) {
     console.log('exportItem-item', item)
-    return {
-      value: item.id,
-      key: item.key,
-    };
+    return item.key;
   }
 }
