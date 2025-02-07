@@ -38,6 +38,8 @@ export const reorder = indexes => ({
 });
 
 export const toggleProduct = (item, isSelected) => async (dispatch, getState) => {
+  
+  console.log('toggleProduct', item, isSelected);
   dispatch(isSelected ? removeItem(item) : addItem(item));
   dispatch(setTouched(true));
 
@@ -62,7 +64,9 @@ export const getSelectedItems = () => async (dispatch, getState) => {
 
   try {
     const ids = await SDK.field.getValue();
+    console.log('getSelectedItems-ids', ids)
     const filteredIds = filter(ids, item => !isEmpty(item));
+    console.log('getSelectedItems-filteredIds', filteredIds)
 
     if (filteredIds && filteredIds.length) {
       const items = await backend.getItems(state, filteredIds);
@@ -72,14 +76,19 @@ export const getSelectedItems = () => async (dispatch, getState) => {
       }
 
       selectedItems = items;
+      console.log('getSelectedItems-selectedItems', selectedItems)
     }
 
     selectedItems = sortBy(selectedItems, ({ id }) => indexOf(ids, id));
 
+    console.log('before-SetValue')
     if (selectedItems.length !== ids.length) {
       dispatch(setValue(selectedItems));
     }
+    console.log('before-setSelectedItems')
+
     dispatch(setSelectedItems(selectedItems));
+    console.log('before-setFetching')
 
     dispatch(setFetching(false));
     dispatch(setInitialised(true));

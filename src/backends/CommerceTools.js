@@ -63,6 +63,7 @@ export class CommerceTools {
       const response = await fetch(`${this.apiUrl}/${projectKey}/product-projections?${queryString}`, params);
       const {results} = await response.json();
 
+      console.log('getItems-results', results)
       return this.parseResults(results);
 
     } catch (e) {
@@ -84,6 +85,8 @@ export class CommerceTools {
 
   parseResults(data) {
     return data.map((item) => {
+      console.log('parseResults-item', item)
+
       return {
         id: item.id,
         name: item.name[this.locale],
@@ -135,6 +138,7 @@ export class CommerceTools {
   }
 
   exportItem(item) {
+    console.log('exportItem-item', item)
     return item.id;
   }
 }

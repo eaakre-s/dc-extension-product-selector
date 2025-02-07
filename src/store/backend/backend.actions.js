@@ -7,6 +7,10 @@ export const initBackend = () => (dispatch, getState) => {
   const { params } = getState();
   const backend = getBackend(params);
 
+  console.log('params', params)
+  console.log('backend', backend);
+  console.log('dispatch', dispatch);
+  
   dispatch(setBackend(backend));
 };
 
