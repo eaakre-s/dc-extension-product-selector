@@ -52,6 +52,7 @@ export class CommerceTools {
         ...headers
       };
 
+      console.log('getItems-ids', idsStrings);
       const queryString = qs.stringify(
         {
           staged: false,
@@ -60,6 +61,8 @@ export class CommerceTools {
         }
       );
 
+      console.log('getItems-queryString', queryString)
+      
       const response = await fetch(`${this.apiUrl}/${projectKey}/product-projections?${queryString}`, params);
       const {results} = await response.json();
 
