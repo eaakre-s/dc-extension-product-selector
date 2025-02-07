@@ -24,7 +24,7 @@
     "sortablejs": "^1.10.1"
   },
   "scripts": {
-    "start": "set HTTPS=true react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage --watchAll=false",
     "test:auto": "react-scripts test",
