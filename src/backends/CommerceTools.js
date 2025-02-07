@@ -44,6 +44,8 @@ export class CommerceTools {
       if (!filterIds.length){
         return [];
       }
+      
+      console.log('getItems-filterIds', filterIds);
       const headers = await this.getHeaders();
       const idsStrings = '"' + filterIds.join('","') + '"';
 
