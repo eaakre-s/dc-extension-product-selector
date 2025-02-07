@@ -89,6 +89,7 @@ export class CommerceTools {
 
       return {
         id: item.id,
+        key: item.key, 
         name: item.name[this.locale],
         image: this.getImage(item.masterVariant)
       }
@@ -139,6 +140,6 @@ export class CommerceTools {
 
   exportItem(item) {
     console.log('exportItem-item', item)
-    return item.id;
+    return item.key;
   }
 }
