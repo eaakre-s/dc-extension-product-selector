@@ -140,6 +140,9 @@ export class CommerceTools {
 
   exportItem(item) {
     console.log('exportItem-item', item)
-    return item.key;
+    return {
+      value: item.id,
+      key: item.key,
+    };
   }
 }
