@@ -26,9 +26,9 @@ export const fetchSDK = () => async (dispatch, getState) => {
   try {
     SDK = await init();
 
-    console.log('fetchSDK-sdk', SDK)
+    // console.log('fetchSDK-sdk', SDK)
     dispatch(setSDK(SDK));
-    console.log('fetchSDK-params', SDK.params)
+    // console.log('fetchSDK-params', SDK.params)
 
     dispatch(setParams(SDK.params));
     dispatch(initBackend());

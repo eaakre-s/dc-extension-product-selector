@@ -45,7 +45,7 @@ export class CommerceTools {
         return [];
       }
       
-      console.log('getItems', filterIds);
+      // console.log('getItems', filterIds);
       const headers = await this.getHeaders();
       const idsStrings = '"' + filterIds.join('","') + '"';
 
@@ -54,7 +54,7 @@ export class CommerceTools {
         ...headers
       };
 
-      console.log('getItems-ids', idsStrings);
+      // console.log('getItems-ids', idsStrings);
       const queryString = qs.stringify(
         {
           staged: false,
@@ -63,12 +63,12 @@ export class CommerceTools {
         }
       );
 
-      console.log('getItems-queryString', queryString)
+      // console.log('getItems-queryString', queryString)
       
       const response = await fetch(`${this.apiUrl}/${projectKey}/product-projections?${queryString}`, params);
       const {results} = await response.json();
 
-      console.log('getItems-results', results)
+      // console.log('getItems-results', results)
       return this.parseResults(results);
 
     } catch (e) {
@@ -90,7 +90,7 @@ export class CommerceTools {
 
   parseResults(data) {
     return data.map((item) => {
-      console.log('parseResults-item', item)
+      // console.log('parseResults-item', item)
 
       return {
         id: item.id,
@@ -144,7 +144,7 @@ export class CommerceTools {
   }
 
   exportItem(item) {
-    console.log('exportItem-item', item)
+    // console.log('exportItem-item', item)
     return item.key;
   }
 }

@@ -28,7 +28,7 @@ export const rootReducer = combineReducers({
   selectedCatalog: catalogReducer,
   selectedItems: selectedItemsReducer,
   globalError: globalErrorReducer,
-  PAGE_SIZE: (state = 20) => state,
+  PAGE_SIZE: (state = 10) => state,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
