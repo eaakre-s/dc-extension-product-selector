@@ -17,18 +17,8 @@ const styles = makeStyles(theme => ({
   },
   items: {
     display: 'grid',
-    gridTemplateColumns: '100%',
-    justifyContent: 'space-between',
-    width: '100%',
-    '@media(min-width: 450px)': {
-      gridTemplateColumns: '50% 50%'
-    },
-    '@media(min-width: 800px)': {
-      gridTemplateColumns: '25% 25% 25% 25%'
-    },
-    '@media(min-width: 1024px)': {
-      gridTemplateColumns: '20% 20% 20% 20% 20%'
-    }
+    gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
+    width: '100%'
   },
   loader: {
     margin: theme.spacing(2)

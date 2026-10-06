@@ -5,11 +5,11 @@ import { setGlobalError } from '../global-error/global-error.actions';
 
 export const SET_VALUE = 'SET_VALUE';
 
-export const setValue = selectedItems => async (dispatch, getState) => {
+export const setValue = (selectedItems) => async (dispatch, getState) => {
   const { SDK, backend } = getState();
   try {
     // console.log('itemsActions-setValue', selectedItems);
-    await SDK.field.setValue(map(selectedItems, item => backend.exportItem(item)));
+    await SDK.field.setValue(map(selectedItems, (item) => backend.exportItem(item)));
   } catch (e) {
     // console.log('setValue-error', e)
     const error = get(e, '[0].data.keyword');
@@ -28,7 +28,7 @@ export const getItems = () => async (dispatch, getState) => {
     const page = {
       numPages: 0,
       curPage: 0,
-      total: 0
+      total: 0,
     };
     dispatch(setPage(page));
     dispatch(setItems([]));
@@ -40,13 +40,13 @@ export const getItems = () => async (dispatch, getState) => {
   let items = [];
 
   try {
-    const { items: fetchedItems, page } = await state.backend.search(state);
+    const { items: fetchedItems, page } = await state.backend.search({ ...state, searchText: trim(state.searchText) });
     items = fetchedItems;
     dispatch(setPage(page));
     dispatch(setItems(items));
   } catch (e) {
     dispatch(setGlobalError('Could not get items'));
-    console.error(e)
+    console.error(e);
   }
 
   dispatch(setFetching(false));
@@ -54,7 +54,7 @@ export const getItems = () => async (dispatch, getState) => {
 
 export const SET_ITEMS = 'SET_ITEMS';
 
-export const setItems = value => ({
+export const setItems = (value) => ({
   type: SET_ITEMS,
-  value
+  value,
 });

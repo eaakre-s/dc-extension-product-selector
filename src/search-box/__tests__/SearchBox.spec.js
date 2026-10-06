@@ -27,11 +27,11 @@ describe('SearchBox', () => {
     shallow(
       <Render>
         <SearchBox />
-      </Render>
+      </Render>,
     );
   });
 
-  it('trim and call setSearch text on input change', async () => {
+  it('call setSearch text with untrimmed value on input change', async () => {
     const { Render, store } = await mockExtensionWrapper();
 
     const setSearchText = jest.fn();
@@ -39,13 +39,13 @@ describe('SearchBox', () => {
     const wrapper = mount(
       <Render>
         <SearchBoxComponent {...store.getState()} setSearchText={setSearchText} />
-      </Render>
+      </Render>,
     );
 
     act(() => {
       wrapper.find(InputBase).prop('onChange')({ target: { value: ' hello' } });
     });
 
-    expect(setSearchText).toHaveBeenCalledWith('hello');
+    expect(setSearchText).toHaveBeenCalledWith(' hello');
   });
 });

@@ -37,16 +37,7 @@ const styles = makeStyles(theme => ({
     width: '100%',
     zIndex: 2,
     display: 'grid',
-    gridTemplateColumns: '100%',
-    '@media(min-width: 450px)': {
-      gridTemplateColumns: '50% 50%'
-    },
-    '@media(min-width: 800px)': {
-      gridTemplateColumns: '25% 25% 25% 25%'
-    },
-    '@media(min-width: 1024px)': {
-      gridTemplateColumns: '20% 20% 20% 20% 20%'
-    }
+    gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))'
   },
   errorWrapper: {
     height: '20px',

@@ -11,11 +11,11 @@
 }
 .selected-products {
   .MuiCardHeader-content {
-    overflow: hidden;
+    min-width: 0;
   }
-  .MuiCardHeader-subheader {
-    width: calc(100% + 48px);
-  }
+}
+.product .MuiCardHeader-subheader {
+  overflow-wrap: anywhere;
 }
 .MuiCardActionArea-root {
   margin-top: auto !important;

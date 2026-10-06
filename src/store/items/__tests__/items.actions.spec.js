@@ -1,9 +1,8 @@
-import { mockStore } from "../../../utils/mockStore";
-import { setValue, SET_ITEMS, getItems } from "../items.actions";
-import { SET_GLOBAL_ERROR } from "../../global-error/global-error.actions";
-import { SET_PAGE } from "../../pages/pages.actions";
-import { SET_FETCHING } from "../../fetching/fetching.actions";
-
+import { mockStore } from '../../../utils/mockStore';
+import { setValue, SET_ITEMS, getItems } from '../items.actions';
+import { SET_GLOBAL_ERROR } from '../../global-error/global-error.actions';
+import { SET_PAGE } from '../../pages/pages.actions';
+import { SET_FETCHING } from '../../fetching/fetching.actions';
 
 describe('items.actions', () => {
   it('should setValue with the SDk', async () => {
@@ -14,12 +13,12 @@ describe('items.actions', () => {
     const store = mockStore({
       SDK: {
         field: {
-          setValue: setValueMock
-        }
+          setValue: setValueMock,
+        },
       },
       backend: {
-        exportItem: item => item
-      }
+        exportItem: (item) => item,
+      },
     });
 
     await store.dispatch(setValue(['123']));
@@ -36,32 +35,30 @@ describe('items.actions', () => {
     const store = mockStore({
       SDK: {
         field: {
-          setValue: setValueMock
-        }
-      }
+          setValue: setValueMock,
+        },
+      },
     });
 
     await store.dispatch(setValue(['123']));
 
-    expect(store.getActions()).toEqual([
-      { type: SET_GLOBAL_ERROR, value: 'Could not set value' }
-    ]);
+    expect(store.getActions()).toEqual([{ type: SET_GLOBAL_ERROR, value: 'Could not set value' }]);
   });
 
   it('getItems should set items to empty and page to 0 if no search text', async () => {
     const search = jest.fn();
     const store = mockStore({
       backend: {
-        search
+        search,
       },
-      searchText: ' '
+      searchText: ' ',
     });
 
-    await store.dispatch(getItems()); 
+    await store.dispatch(getItems());
 
     expect(store.getActions()).toEqual([
       { type: SET_PAGE, value: { numPages: 0, curPage: 0, total: 0 } },
-      { type: SET_ITEMS, value: [] }
+      { type: SET_ITEMS, value: [] },
     ]);
   });
 
@@ -71,50 +68,50 @@ describe('items.actions', () => {
       page: {
         curPage: 0,
         numPages: 2,
-        total: 10
-      }
+        total: 10,
+      },
     };
     const search = jest.fn().mockImplementation(() => {
-      return Promise.resolve(returnValue)
+      return Promise.resolve(returnValue);
     });
     const state = {
       backend: {
-        search
+        search,
       },
-      searchText: ' hello'
+      searchText: ' hello',
     };
     const store = mockStore(state);
 
-    await store.dispatch(getItems()); 
- 
-    expect(search).toHaveBeenCalledWith(state);
+    await store.dispatch(getItems());
+
+    expect(search).toHaveBeenCalledWith({ ...state, searchText: 'hello' });
     expect(store.getActions()).toEqual([
       { type: SET_FETCHING, value: true },
       { type: SET_PAGE, value: returnValue.page },
       { type: SET_ITEMS, value: returnValue.items },
-      { type: SET_FETCHING, value: false }
-    ])
+      { type: SET_FETCHING, value: false },
+    ]);
   });
 
   it('getItems should set global error if search fails', async () => {
     const search = jest.fn().mockImplementation(() => {
-      return Promise.reject()
+      return Promise.reject();
     });
     jest.spyOn(console, 'error').mockImplementation(() => {});
     const state = {
       backend: {
-        search
+        search,
       },
-      searchText: ' hello'
+      searchText: ' hello',
     };
     const store = mockStore(state);
 
-    await store.dispatch(getItems());  
+    await store.dispatch(getItems());
 
     expect(store.getActions()).toEqual([
       { type: SET_FETCHING, value: true },
       { type: SET_GLOBAL_ERROR, value: 'Could not get items' },
       { type: SET_FETCHING, value: false },
-    ])
+    ]);
   });
 });
