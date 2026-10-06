@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/dc-extension-product-selector/static/css/main.1b267504.chunk.css",
-    "main.js": "/dc-extension-product-selector/static/js/main.9734cea0.chunk.js",
-    "main.js.map": "/dc-extension-product-selector/static/js/main.9734cea0.chunk.js.map",
+    "main.css": "/dc-extension-product-selector/static/css/main.bf3cd5cf.chunk.css",
+    "main.js": "/dc-extension-product-selector/static/js/main.6845dccf.chunk.js",
+    "main.js.map": "/dc-extension-product-selector/static/js/main.6845dccf.chunk.js.map",
     "runtime-main.js": "/dc-extension-product-selector/static/js/runtime-main.992f3569.js",
     "runtime-main.js.map": "/dc-extension-product-selector/static/js/runtime-main.992f3569.js.map",
-    "static/js/2.ce696078.chunk.js": "/dc-extension-product-selector/static/js/2.ce696078.chunk.js",
-    "static/js/2.ce696078.chunk.js.map": "/dc-extension-product-selector/static/js/2.ce696078.chunk.js.map",
+    "static/js/2.09d21354.chunk.js": "/dc-extension-product-selector/static/js/2.09d21354.chunk.js",
+    "static/js/2.09d21354.chunk.js.map": "/dc-extension-product-selector/static/js/2.09d21354.chunk.js.map",
     "index.html": "/dc-extension-product-selector/index.html",
-    "precache-manifest.daaf7e83738cf180aecaefea068f41f0.js": "/dc-extension-product-selector/precache-manifest.daaf7e83738cf180aecaefea068f41f0.js",
+    "precache-manifest.37b171b7de29451558f6667c13cc78c5.js": "/dc-extension-product-selector/precache-manifest.37b171b7de29451558f6667c13cc78c5.js",
     "service-worker.js": "/dc-extension-product-selector/service-worker.js",
-    "static/css/main.1b267504.chunk.css.map": "/dc-extension-product-selector/static/css/main.1b267504.chunk.css.map",
-    "static/js/2.ce696078.chunk.js.LICENSE.txt": "/dc-extension-product-selector/static/js/2.ce696078.chunk.js.LICENSE.txt"
+    "static/css/main.bf3cd5cf.chunk.css.map": "/dc-extension-product-selector/static/css/main.bf3cd5cf.chunk.css.map",
+    "static/js/2.09d21354.chunk.js.LICENSE.txt": "/dc-extension-product-selector/static/js/2.09d21354.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.992f3569.js",
-    "static/js/2.ce696078.chunk.js",
-    "static/css/main.1b267504.chunk.css",
-    "static/js/main.9734cea0.chunk.js"
+    "static/js/2.09d21354.chunk.js",
+    "static/css/main.bf3cd5cf.chunk.css",
+    "static/js/main.6845dccf.chunk.js"
   ]
 }
